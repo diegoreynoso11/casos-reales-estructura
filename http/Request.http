@@ -8,7 +8,7 @@ GET http://localhost:3000/get/all
 GET http://localhost:3000/get/id/1
 
 ### Obtener un elemento por nombre 
-GET http://localhost:3000/get/name/mochi
+GET http://localhost:3000/get/name/camise
 
 ### Crear un nuevo elemento
 POST http://localhost:3000/product/add
@@ -19,7 +19,7 @@ Content-Type: application/json
   "description": "Delicious ice cream"
 }
 ### Editar un elemento existente
-PUT http://localhost:3000/product/update/21
+PUT http://localhost:3000/product/update/6
 Content-Type: application/json
 
 {
@@ -27,4 +27,4 @@ Content-Type: application/json
   "description": ""
 }
 ### Eliminar un elemento por ID
-DELETE http://localhost:3000/product/delete/3
+DELETE http://localhost:3000/product/delete/6

@@ -5,6 +5,16 @@
     "description": "Camiseta de algodón 100% en varios colores disponibles."
   },
   {
+    "id": 2,
+    "name": "Zapatos Deportivos",
+    "description": "Calzado cómodo y ligero para correr o caminar."
+  },
+  {
+    "id": 3,
+    "name": "Mochila Escolar",
+    "description": "Mochila con múltiples compartimentos y diseño ergonómico."
+  },
+  {
     "id": 4,
     "name": "Auriculares Inalámbricos",
     "description": "Auriculares Bluetooth con cancelación de ruido."
@@ -13,15 +23,5 @@
     "id": 5,
     "name": "Botella Térmica",
     "description": "Botella de acero inoxidable que mantiene la temperatura durante horas."
-  },
-  {
-    "name": "producto nuevo",
-    "description": "Delicious ice cream",
-    "id": 6
-  },
-  {
-    "name": "producto nuevo 2",
-    "description": "Delicious ice cream",
-    "id": 7
   }
 ]
