@@ -1,0 +1,18 @@
+{
+  "name": "caso-01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type" : "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-express" : "node --watch ./express/index.js",
+    "dev-http" : "node --watch ./http/http.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

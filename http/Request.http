@@ -1,0 +1,30 @@
+### Pagina de inicio
+GET http://localhost:3000/
+
+### Obtener todos los elementos
+GET http://localhost:3000/get/all
+
+### Obtener un elemento por ID
+GET http://localhost:3000/get/id/1
+
+### Obtener un elemento por nombre 
+GET http://localhost:3000/get/name/mochi
+
+### Crear un nuevo elemento
+POST http://localhost:3000/product/add
+Content-Type: application/json
+
+{
+  "name": "producto nuevo 2",
+  "description": "Delicious ice cream"
+}
+### Editar un elemento existente
+PUT http://localhost:3000/product/update/21
+Content-Type: application/json
+
+{
+  "name": "Producto Editado",
+  "description": ""
+}
+### Eliminar un elemento por ID
+DELETE http://localhost:3000/product/delete/3
