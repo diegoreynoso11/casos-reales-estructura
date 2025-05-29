@@ -1,8 +1,8 @@
 import http from 'http'
-import { getRoutes } from './get.js'
-import { postRoutes } from './post.js'
-import { putRoutes } from './put.js'
-import { deleteRoutes } from './delete.js'
+import { getRoutes } from './routes/get.js'
+import { postRoutes } from './routes/post.js'
+import { putRoutes } from './routes/put.js'
+import { deleteRoutes } from './routes/delete.js'
 const desiredPort = 3000
 
 function requestHandler (req, res) {
