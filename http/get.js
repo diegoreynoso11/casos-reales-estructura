@@ -7,6 +7,9 @@ export async function getRoutes (req, res) {
           <h2>/get/all para traer todos los items</h2> 
           <h2>/get/id/:id para traer solo un elemento por su ID.</h2>
           <h2>/get/name/:name para traer un elemento por su nombre.</h2>
+          <h2>/product/add/ para crear un nuevo elemento</h2>
+          <h2>/product/update/:id para editar un elemento existente</h2>
+          <h2>/product/delete/:id para eliminar un elemento existente</h2>
           `)
   } else if (req.url === '/get/all') {
     res.writeHead(200, { 'Content-Type': 'application/json' })
