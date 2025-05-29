@@ -13,9 +13,6 @@ Este es un proyecto básico de ejemplo para una **API REST** con:
 - Dirigete al directiorio 
   ```bash
   cd 01-api-nodeJS
-- `pnpm` (opcional):
-  ```bash
-  npm install -g pnpm
 - Inicia el proyecto 
   ```bash
   pnpm run dev-http
