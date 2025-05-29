@@ -2,18 +2,20 @@
 
 Este es un proyecto básico de ejemplo para una **API REST** con:
 - ✅ Rutas CRUD: `POST`, `GET`, `PUT`, `DELETE`
-- ✅ Scripts para desarrollo `pnpm run dev-http`
+- ✅ Scripts para desarrollo
 ---
 
 ## 🧰 Requisitos
 
-
-- `pnpm` (opcional):
-  ```bash
-  npm install -g pnpm
 - Clona el repositorio
   ```bash
   git clone https://github.com/diegoreynoso11/casos-reales-estructura.git
+- Dirigete al directiorio 
+  ```bash
+  cd 01-api-nodeJS
+- `pnpm` (opcional):
+  ```bash
+  npm install -g pnpm
 - Inicia el proyecto 
   ```bash
   pnpm run dev-http
