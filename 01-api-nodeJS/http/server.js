@@ -3,6 +3,7 @@ import { getRoutes } from './routes/get.js'
 import { postRoutes } from './routes/post.js'
 import { putRoutes } from './routes/put.js'
 import { deleteRoutes } from './routes/delete.js'
+
 const desiredPort = 3000
 
 function requestHandler (req, res) {
@@ -16,7 +17,8 @@ function requestHandler (req, res) {
     deleteRoutes(req, res)
   }
 }
+
 const server = http.createServer(requestHandler)
 server.listen(desiredPort, () => {
-  console.log(`Server running at http://localhost:${desiredPort}/`)
+  console.log(`Servidor con MOCK corriendo en http://localhost:${desiredPort}/`)
 })

@@ -13,10 +13,18 @@ Este es un proyecto básico de ejemplo para una **API REST** con:
 - Dirigete al directiorio 
   ```bash
   cd 01-api-nodeJS
-- Inicia el proyecto 
+- `pnpm` (opcional):
+  ```bash
+  npm install -g pnpm
+- Inicia el proyecto en modo MOCK(`json`)
   ```bash
   pnpm run dev-http
+- Inicia el proyecto en modo DB(`MySQL`)
+  ```bash
+  pnpm run dev-http-db
 
+:warning: Para iniciar en modo db deberás tener instalado e iniciado `XAMPP` y `MySQL Workbench`   
+    
 ## Endpoints disponibles
 ### Pagina de inicio
 GET http://localhost:3000/

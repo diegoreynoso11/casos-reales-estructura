@@ -6,8 +6,10 @@
   "type" : "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "init_db": "\"C:\\xampp\\mysql\\bin\\mysql.exe\" -u root < http/routesDb/config/init.sql",
     "dev-express" : "node --watch ./express/index.js",
-    "dev-http" : "node --watch ./http/server.js"
+    "dev-http" : "node --watch ./http/server.js",
+    "dev-http-db" : "node --watch ./http/server-db.js"
   },
   "keywords": [],
   "author": "",

@@ -5,26 +5,26 @@ GET http://localhost:3000/
 GET http://localhost:3000/get/all
 
 ### Obtener un elemento por ID
-GET http://localhost:3000/get/id/1
+GET http://localhost:3000/get/id/2
 
 ### Obtener un elemento por nombre 
-GET http://localhost:3000/get/name/camise
+GET http://localhost:3000/get/name/3
 
 ### Crear un nuevo elemento
 POST http://localhost:3000/product/add
 Content-Type: application/json
 
 {
-  "name": "producto nuevo 2",
-  "description": "Delicious ice cream"
+  "name": "Helado de chocolate 4",
+  "description": "Delicioso helado de chocolate con nueces"
 }
 ### Editar un elemento existente
-PUT http://localhost:3000/product/update/6
+PUT http://localhost:3000/product/update/8
 Content-Type: application/json
 
 {
-  "name": "Producto Editado",
-  "description": ""
+  "name": "Helado de chocolate 4",
+  "description": "Delicioso helado de de chocolate con nueces"
 }
 ### Eliminar un elemento por ID
-DELETE http://localhost:3000/product/delete/6
+DELETE http://localhost:3000/product/delete/8

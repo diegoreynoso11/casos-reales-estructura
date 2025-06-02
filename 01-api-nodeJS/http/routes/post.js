@@ -1,5 +1,7 @@
 import fs from 'fs'
+import { FormatRes } from '../utils/formatRes.js'
 export async function postRoutes (req, res) {
+  const response = new FormatRes(res)
   if (req.url.includes('/product/add')) {
     let body = ''
 
@@ -9,8 +11,7 @@ export async function postRoutes (req, res) {
 
     req.on('end', () => {
       if (!body) {
-        res.writeHead(400, { 'Content-Type': 'application/json' })
-        return res.end(JSON.stringify({ status: 405, error: 'Cuerpo vacío' }))
+        return response.badRequest('El cuerpo de la solicitud no puede estar vacío')
       }
 
       try {
@@ -21,8 +22,7 @@ export async function postRoutes (req, res) {
         const findedProduct = products.find(product => product.name === nuevoProducto.name)
         // validamos que el producto no existe para poder crearlo
         if (findedProduct && findedProduct.name === nuevoProducto.name) {
-          res.writeHead(400, { 'Content-Type': 'application/json' })
-          return res.end(JSON.stringify({ status: 304, error: 'El producto ya existe en la base de datos' }))
+          return response.badRequest('El producto ya existe en la base de datos')
         }
         // ordenamos los productos para que el id no choque con los productos editados
         const sortedProducts = products.sort((a, b) => a.id - b.id)
@@ -33,16 +33,12 @@ export async function postRoutes (req, res) {
         // Escribimos el json
         fs.writeFileSync('data/data.json', JSON.stringify(allProducts, null, 2), 'utf8')
         // Respondemos al cliente
-        res.writeHead(201, { 'Content-Type': 'application/json' })
-        res.end(JSON.stringify({ status: 201, message: 'Producto creado' }))
+        return response.created({ message: 'Producto creado con éxito' })
       } catch (error) {
-        console.error('Error procesando POST:', error.message)
-        res.writeHead(400, { 'Content-Type': 'application/json' })
-        res.end(JSON.stringify({ error: 'Formato JSON inválido' }))
+        return response.serverError('Error al procesar la solicitud')
       }
     })
   } else {
-    res.writeHead(404, { 'Content-Type': 'application/json' })
-    res.end(JSON.stringify({ error: 'Ruta no encontrada' }))
+    return response.notFoundRoute()
   }
 }

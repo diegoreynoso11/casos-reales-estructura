@@ -1,5 +1,7 @@
 import fs from 'fs'
+import { FormatRes } from '../utils/formatRes.js'
 export async function putRoutes (req, res) {
+  const response = new FormatRes(res)
   if (req.url.includes('/product/update/')) {
     let body = ''
     const id = req.url.split('/').pop()
@@ -9,17 +11,19 @@ export async function putRoutes (req, res) {
 
     req.on('end', () => {
       if (!body) {
-        res.writeHead(400, { 'Content-Type': 'application/json' })
-        return res.end(JSON.stringify({ status: 405, error: 'Cuerpo vacío' }))
+        return response.badRequest('El cuerpo de la solicitud no puede estar vacío')
       }
       try {
         const rawData = fs.readFileSync('data/data.json', 'utf8')
         const products = JSON.parse(rawData)
         // Encontrar el producto por ID recibido del body
         const findedProduct = products.find(product => product.id === Number(id))
+        const notValid = products.find(product => product.name === body.name)
+        if (notValid) {
+          return response.badRequest('El nombre del producto ya existe')
+        }
         if (!findedProduct) {
-          res.writeHead(404, { 'Content-Type': 'application/json' })
-          return res.end(JSON.stringify({ status: 404, error: 'El producto no existe en la base de datos' }))
+          return response.notFound('Producto no encontrado')
         }
         const parsedBody = JSON.parse(body)
         // Editar el producto
@@ -27,8 +31,7 @@ export async function putRoutes (req, res) {
         // validar que el body no sea igual al producto encontrado
         const invalidProduct = findedProduct.name === parsedBody.name && findedProduct.description === parsedBody.description
         if (invalidProduct) {
-          res.writeHead(400, { 'Content-Type': 'application/json' })
-          return res.end(JSON.stringify({ status: 304, error: 'El producto ya contiene esos datos' }))
+          return response.badRequest('El producto no ha cambiado, no se requiere actualización')
         }
         // Productos sin el producto editado
         const filteredProducts = products.filter(product => product.id !== Number(id))
@@ -36,12 +39,12 @@ export async function putRoutes (req, res) {
         const updatedProducts = [...filteredProducts, newProduct]
         // Escribir el json actualizado con filesystem
         fs.writeFileSync('data/data.json', JSON.stringify(updatedProducts, null, 2), 'utf8')
-        res.writeHead(200, { 'Content-Type': 'application/json' })
-        res.end(JSON.stringify({ status: 201, message: 'Producto actualizado con éxito' }))
+        return response.success({ message: 'Producto actualizado con éxito' })
       } catch (error) {
-        res.writeHead(400, { 'Content-Type': 'application/json' })
-        return res.end(JSON.stringify({ status: 505, error: 'Formato JSON inválido' }))
+        return response.serverError('Error al procesar la solicitud')
       }
     })
+  } else {
+    return response.notFoundRoute()
   }
 }
