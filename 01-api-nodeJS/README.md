@@ -19,12 +19,25 @@ Este es un proyecto básico de ejemplo para una **API REST** con:
 - Inicia el proyecto en modo MOCK(`json`)
   ```bash
   pnpm run dev-http
-- Inicia el proyecto en modo DB(`MySQL`)
+
+:warning: Para iniciar en modo db deberás tener instalado e iniciado `XAMPP` y `MySQL Workbench`   
+
+- Iniciar el servidor MySQL desde XAMPP
+Abre el panel de control de `XAMPP` e
+Inicia el módulo MySQL haciendo clic en el botón Start.
+
+- Crear la base de datos
+Abre MySQL Workbench.
+Conéctate al servidor local (localhost) con el usuario por defecto
+
+Ejecuta el siguiente script para crear la base de datos y tabla que usará la API:
+ ```bash 
+ pnpm run init_db
+  ```
+- inicia el proyecto en modo DB
   ```bash
   pnpm run dev-http-db
 
-:warning: Para iniciar en modo db deberás tener instalado e iniciado `XAMPP` y `MySQL Workbench`   
-    
 ## Endpoints disponibles
 ### Pagina de inicio
 GET http://localhost:3000/
