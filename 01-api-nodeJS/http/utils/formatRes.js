@@ -31,7 +31,6 @@ export class FormatRes {
   }
 
   notFoundRoute () {
-    this.res.writeHead(404, { 'Content-Type': 'text/html' })
-    return this.res.end('<h1>404 - Página no encontrada</h1>')
+    return this.send(404, { error: 'Ruta no encontrada' })
   }
 }

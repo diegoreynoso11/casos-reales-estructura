@@ -3,7 +3,7 @@ import { FormatRes } from '../utils/formatRes.js'
 export async function getRoutesDb (req, res) {
   const response = new FormatRes(res)
   if (req.url === '/') {
-    return response.send(200, {
+    return response.success({
       message: 'Api simple estructura - http + mySQL',
       routes: {
         '/get/all': 'Traer todos los items',
@@ -41,7 +41,7 @@ export async function getRoutesDb (req, res) {
       const queryString = 'SELECT * FROM products WHERE name LIKE ?'
       const [rows] = await pool.query(queryString, ['%' + name + '%'])
       if (rows.length === 0) {
-        response.notFound('Producto no encontrado')
+        return response.notFound('Producto no encontrado')
       }
       return response.success(rows)
     } catch (error) {
